@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'menu_page.dart';
 import 'src/core/network/sl_network.dart';
+import 'src/features/menu/sl_menu_feature.dart';
 
 void main() async {
   await init();
@@ -27,4 +28,5 @@ class MyApp extends StatelessWidget {
 
 FutureOr<void> init() async {
   await SlNetwork().initialize();
+  await SlMenuFeature().initialize();
 }
