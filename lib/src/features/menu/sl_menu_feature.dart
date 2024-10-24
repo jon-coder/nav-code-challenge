@@ -8,6 +8,7 @@ import 'data/repositories/menu_repository_impl.dart';
 import 'datasource/menu_datasource_impl.dart';
 import 'domain/interfaces/menu_repository.dart';
 import 'domain/usecases/fetch_menu_usecase.dart';
+import 'ui/menu_viewmodel.dart';
 
 class SlMenuFeature implements AppResources {
   static const String baseUrl =
@@ -28,6 +29,12 @@ class SlMenuFeature implements AppResources {
     SL.I.registerFactory<FetchMenuUsecase>(
       () => FetchMenuUsecase(
         SL.I<MenuRepository>(),
+      ),
+    );
+
+    SL.I.registerSingleton<MenuViewmodel>(
+      MenuViewmodel(
+        fetchMenuUsecase: SL.I<FetchMenuUsecase>(),
       ),
     );
   }
