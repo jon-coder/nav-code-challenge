@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'src/app_routes.dart';
 import 'src/core/network/sl_network.dart';
 import 'src/core/ui/app_colors.dart';
+import 'src/features/cart/sl_cart_feature.dart';
 import 'src/features/menu/sl_menu_feature.dart';
 
 void main() async {
@@ -33,5 +34,6 @@ class MyApp extends StatelessWidget {
 
 FutureOr<void> init() async {
   await SlNetwork().initialize();
+  await SlCartFeature().initialize();
   await SlMenuFeature().initialize();
 }

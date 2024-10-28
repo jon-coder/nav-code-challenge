@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import 'features/cart/views/cart_view.dart';
 import 'features/menu/ui/menu_page.dart';
 import 'features/menu/ui/views/product_view.dart';
 import 'features/menu/ui/views/products_list_view.dart';
@@ -30,6 +31,12 @@ class AppRoutes {
           );
         },
       ),
+      GoRoute(
+        path: '/my-cart',
+        builder: (context, state) {
+          return const CartView();
+        },
+      ),
     ],
   );
 
@@ -54,6 +61,9 @@ class AppRoutes {
           extra: args,
         );
         break;
+      case RouteType.cart:
+        GoRouter.of(ctx).push('/my-cart');
+        break;
     }
   }
 }
@@ -62,4 +72,5 @@ enum RouteType {
   menu,
   productsCategory,
   product,
+  cart,
 }

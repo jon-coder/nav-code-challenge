@@ -4,6 +4,7 @@ import '../../../core/extensions/presentation_extensions.dart';
 import '../../../core/service_locator/domain/interfaces/i_service_locator.dart';
 import '../../../core/ui/app_colors.dart';
 import '../../../core/ui/components/app_bar_component.dart';
+import '../../cart/views/cart_component.dart';
 import 'menu_states.dart';
 import 'menu_viewmodel.dart';
 import 'views/menu_error_view.dart';
@@ -33,13 +34,7 @@ class _MenuPageState extends State<MenuPage> {
       backgroundColor: AppColors.gray[10],
       appBar: const AppBarComponent(
         title: 'Categories Page',
-        action: Padding(
-          padding: EdgeInsets.only(right: 16),
-          child: Icon(
-            Icons.shopping_bag_outlined,
-            size: 32,
-          ),
-        ),
+        action: CartComponent(),
       ),
       body: viewmodel.state.observer(builder: (_, state, __) {
         if (state is MenuLoadingState) {
