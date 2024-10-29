@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 
 import '../../domain/entities/interceptor_failure.dart';
 import '../../domain/entities/network_failure.dart';
@@ -77,6 +78,7 @@ class InterceptorHandler implements INetworkInterceptor {
     );
   }
 
+  @visibleForTesting
   Future<Either<InterceptorFailure, T>> intercept<T>({
     required T input,
     required InterceptorCall<T> interceptorCall,
@@ -84,25 +86,25 @@ class InterceptorHandler implements INetworkInterceptor {
   }) async {
     T interceptedValue = input;
     for (final interceptor in interceptors) {
-      final result = await interceptorCall(
-        interceptor,
-        interceptedValue,
-      );
-      result.fold((failure) {
-        return failure;
+      final result = await interceptorCall(interceptor, interceptedValue);
+      return result.fold((failure) {
+        return Left(failure);
       }, (result) {
         interceptedValue = copyWithCallBack(interceptedValue, result);
+        return Right(interceptedValue);
       });
     }
     return Right(interceptedValue);
   }
 }
 
+@visibleForTesting
 typedef InterceptorCall<T> = Future<Either<InterceptorFailure, T>> Function(
   INetworkInterceptor,
   T,
 );
 
+@visibleForTesting
 typedef CopyWithCallback<T> = T Function(
   T interceptorValue,
   T updatedValue,

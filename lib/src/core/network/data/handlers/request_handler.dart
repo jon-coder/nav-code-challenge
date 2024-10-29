@@ -48,10 +48,8 @@ class RequestHandler {
   Future<Either<NetworkFailure, NetworkResponse>> executeRequest(
     Either<InterceptorFailure, NetworkRequest> request,
   ) async {
-    return request.fold(
-      (failure) {
-        return Left(failure);
-      },
+    return await request.fold(
+      (failure) async => Left(failure),
       (req) async {
         final result = await httpClient.request(req);
         final response = NetworkResponse.fromJson(result);
