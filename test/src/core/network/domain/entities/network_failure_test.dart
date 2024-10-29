@@ -10,7 +10,7 @@ void main() {
         message: 'Not Found',
         statusCode: 404,
         url: 'https://api.example.com/data',
-        type: null, // this will be derived from statusCode
+        type: null,
         method: NetworkRequestMethod.get,
       );
 
