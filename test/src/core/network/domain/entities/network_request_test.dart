@@ -68,8 +68,7 @@ void main() {
 
       expect(updatedRequest.endpoint, equals('/new-data'));
       expect(updatedRequest.method, equals(NetworkRequestMethod.post));
-      expect(updatedRequest.baseUrl,
-          equals(request.baseUrl)); // should remain the same
+      expect(updatedRequest.baseUrl, equals(request.baseUrl));
     });
 
     test('should copy with all fields updated', () {

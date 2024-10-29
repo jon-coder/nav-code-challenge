@@ -49,14 +49,13 @@ class _CartViewState extends State<CartView> {
                       child: Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius:
-                              BorderRadius.circular(12), // Borda arredondada
+                          borderRadius: BorderRadius.circular(12),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.2),
                               blurRadius: 4,
                               spreadRadius: 2,
-                              offset: const Offset(0, 2), // Sombra abaixo
+                              offset: const Offset(0, 2),
                             ),
                           ],
                         ),

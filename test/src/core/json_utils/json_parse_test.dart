@@ -19,7 +19,7 @@ void main() {
     });
 
     test('parseFromString returns null for invalid JSON', () {
-      const jsonString = '{key: value}'; // JSON inválido
+      const jsonString = '{key: value}';
       expect(JsonUtils.parseFromString(jsonString), isNull);
     });
   });
