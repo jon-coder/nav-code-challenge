@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:navalia_code_challenge/src/core/failures/api_failure.dart';
 import 'package:navalia_code_challenge/src/core/network/data/handlers/interceptor_handler.dart';
 import 'package:navalia_code_challenge/src/core/network/data/handlers/request_handler.dart';
 import 'package:navalia_code_challenge/src/core/network/data/interfaces/network_http_client.dart';
